@@ -12,15 +12,34 @@
 // Principle 1
 
 // code example for Window Binding
-
+console.log(this);
 // Principle 2
 
 // code example for Implicit Binding
+const jeffsObject = {
+    name: 'Jeff',
+    favoriteColor: "blue",
+    sayHello: function () {
+        console.log(`${this.name}'s favorite color is ${this.favoriteColor}`);
+    }
+};
 
+jeffsObject.sayHello();
 // Principle 3
 
 // code example for New Binding
+function BookTitle(title) {
+    this.newTitle = title;
+    this.read = function () {
+        console.log(`This is the tale of ${this.newTitle}`);
+    };
+}
 
+const jeffsFave = new BookTitle(`Ender's Game`);
+const jeffsSecondFave = new BookTitle(`Eragon`);
+
+jeffsFave.read();
 // Principle 4
 
 // code example for Explicit Binding
+jeffsFave.read.apply(jeffsSecondFave) //The difference between .call and .apply has to do with the type of arguments they accept. .call accepts an argument list, .apply accepts a single array of arguments.
